@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features | Online Charity Posters</title>
+<style>
+  /* General Styles */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+  }
+
+  /* Navbar */
+  .navbar {
+    background: #008c8c;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
+
+  .navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+  }
+
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  .navbar ul li a:hover,
+  .navbar ul li a.active {
+    background: #00b3b3;
+  }
+
+  /* Content Page */
+  .content-page {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .content-page h1 {
+    color: #005959;
+    font-size: 30px;
+  }
+
+  .content-page p {
+    max-width: 600px;
+    margin: 10px auto 25px;
+    font-size: 16px;
+    color: #555;
+  }
+
+  .feature-buttons button {
+    background: #00a6a6;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+  }
+
+  .feature-buttons button:hover {
+    background: #007777;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .gallery img {
+    width: 250px;
+    height: 170px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 15px;
+    background: #008c8c;
+    color: white;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h2 class="logo">Online Charity Posters</h2>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="features.html" class="active">Features</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="content-page">
+    <h1>Our Features</h1>
+    <p>Welcome to our features section! Here you can explore some of our charity's inspiring photos and graphics that promote kindness, compassion, and hope. Click a button below to begin.</p>
+
+    <div class="feature-buttons">
+      <button onclick="showPhotos()">View Photos</button>
+      <button onclick="showGraphics()">View Graphics</button>
+    </div>
+
+    <div id="displayArea" class="gallery"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Online Blue Skull Charity Posters | Designed to Inspire Giving</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function showPhotos() {
+      const displayArea = document.getElementById("displayArea");
+      displayArea.innerHTML = `
+        <h2>Charity Event Photos</h2>
+        <div class="gallery">
+          <img src="picture 1.jpeg" alt="Photo 1">
+          <img src="torn shoes.jpeg" alt="Photo 2">
+          <img src="picture 2.jpg" alt="Photo 3">
+          <img src="shoes.jpeg" alt="Photo 4">
+          <img src="donations.jpeg" alt="Photo 4">
+          <img src="kids.jpeg" alt="Photo 4">
+          <img src="kids2.jpeg" alt="Photo 4">
+        </div>
+      `;
+    }
+
+    function showGraphics() {
+      const displayArea = document.getElementById("displayArea");
+      displayArea.innerHTML = `
+        <h2>Charity Graphics & Posters</h2>
+        <div class="gallery">
+          <img src="Humanitarian poster-01.jpg" alt="Graphic 3">
+          <img src="Humanitarian poster-01.jpg" alt="Graphic 3">
+          <img src="Humanitarian poster-01.jpg" alt="Graphic 3">
+          <img src="Humanitarian poster-01.jpg" alt="Graphic 3">
+        </div>
+      `;
+    }
+
+    function logout() {
+      alert("You have logged out successfully!");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
