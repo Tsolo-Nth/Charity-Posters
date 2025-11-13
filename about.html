@@ -1,77 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Online Charity Posters</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Blue Skull Charity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a3552;
+            --secondary: #00a6a6;
+            --accent: #ff6600;
+            --light: #f8f9fa;
+            --dark: #333;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: var(--secondary);
+        }
+
+        .about-hero {
+            background: linear-gradient(rgba(26, 53, 82, 0.8), rgba(0, 166, 166, 0.7)), 
+                        url('https://images.unsplash.com/photo-1551833993-1d2e6ec4544c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .about-section {
+            margin-bottom: 4rem;
+        }
+
+        .about-section h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-section h3 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin: 2rem 0 1rem;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .about-section ul {
+            margin-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-section li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .mission-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .mission-box p {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .navbar ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-skull logo-icon"></i>
+            <h2>Blue Skull Charity</h2>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-  <h2 class="logo">Online Charity Posters</h2>
-  <ul>
-    <li><a href="home.html">Home</a></li>
-    <li><a href="about.html" class="active">About Us</a></li>
-    <li><a href="features.html">Features</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="#" onclick="logout()">Logout</a></li>
-  </ul>
-</nav>
+    <!-- About Hero -->
+    <section class="about-hero">
+        <h1>About Blue Skull Charity</h1>
+        <p>Restoring Lives One Step at a Time</p>
+    </section>
 
-<!-- About Section -->
-<div class="content-page">
-  <h1>About Blue Skull Charity</h1>
+    <!-- About Content -->
+    <div class="about-content">
+        <div class="about-section">
+            <h2>Our Story</h2>
+            <p>Blue Skull Charity was founded with a simple yet powerful mission: to provide footwear for underprivileged children who walk barefoot every day. What started as a small initiative has grown into a movement that has impacted thousands of lives across multiple communities.</p>
+            
+            <h3>Brand Name Meaning</h3>
+            <p>The name <strong>Blue Skull</strong> symbolizes resilience, strength, and identity. "Skull" represents human dignity and the core of life, while "Blue" reflects hope, peace, and trust - values that align perfectly with our charity's mission.</p>
+        </div>
 
-  <div style="margin-bottom: 20px;">
-    <img src="logo.jpg" alt="Blue Skull Logo" style="width:180px; border-radius:10px; margin:10px;">
-  </div>
+        <div class="about-section">
+            <h2>Our Impact</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">10,000+</span>
+                    <span class="stat-label">Children Helped</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Communities</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Years of Service</span>
+                </div>
+            </div>
 
-  <h2>Blue Skull Charity: Restoring Lives One Step at a Time</h2>
+            <h3>Health & Safety</h3>
+            <p>We significantly reduce the risk of soil-transmitted diseases and foot injuries by providing protective footwear. Children no longer suffer from cuts, infections, or parasitic diseases caused by walking barefoot.</p>
 
-  <h3>Brand Name Meaning</h3>
-  <p>
-    The name <strong>Blue Skull</strong> symbolizes resilience, strength, and identity. 
-    “Skull” represents human dignity and the core of life, while “Blue” reflects hope, peace, and trust values that align with the charity’s mission.
-  </p>
+            <h3>Education Access</h3>
+            <p>With proper shoes, school attendance has increased by 45% in the communities we serve. Many schools require shoes as part of their uniform, and now children can meet this requirement.</p>
 
-  <h3>Purpose</h3>
-  <p>
-    <strong>Blue Skull</strong> exists to restore dignity and opportunity for underprivileged children 
-    by providing proper footwear. The aim is to bridge the gap in basic needs, starting with shoes
-    an essential tool for safety, confidence, and access to education.
-  </p>
-  <p>
-    Many children walk long distances barefoot, facing injury, disease, and social stigma. 
-    Shoes protect them, improve school attendance, and give them confidence to pursue their future.
-  </p>
+            <h3>Confidence Building</h3>
+            <p>Shoes restore dignity and self-esteem. Children who once felt ashamed to attend school now walk with pride, participate in activities, and engage more confidently with their peers.</p>
+        </div>
 
-  <h3>Impact</h3>
-  <ul style="text-align:left; max-width:700px; margin:20px auto; line-height:1.8;">
-    <li><strong>Health & Safety:</strong> Reduces the risk of infections and injuries.</li>
-    <li><strong>Education:</strong> Encourages consistent school attendance.</li>
-    <li><strong>Confidence:</strong> Empowers kids to walk with pride and dignity.</li>
-    <li><strong>Community Engagement:</strong> Inspires individuals and companies to take part in meaningful giving.</li>
-  </ul>
+        <div class="mission-box">
+            <h3>Our Mission Statement</h3>
+            <p>"Blue Skull is more than a charity, it's a movement. Donating shoes is not just about giving an item; it's about restoring lives, creating hope, and walking alongside the next generation toward a brighter future."</p>
+        </div>
 
-  <p>
-    Blue Skull is more than a charity, it’s a movement. Donating shoes is not just about giving an item; 
-    it’s about restoring lives, creating hope, and walking alongside the next generation.
-  </p>
+        <div class="about-section">
+            <h2>Our Vision</h2>
+            <p>We envision a world where no child has to miss school or suffer health issues due to lack of proper footwear. Through sustainable partnerships and community engagement, we aim to expand our reach to every corner where children need our help.</p>
+            
+            <p>Join us in our mission to put shoes on every child's feet and hope in every heart. Together, we can create lasting change, one step at a time.</p>
+        </div>
+    </div>
 
-  <div style="margin-top:40px;">
-    <img src="team.jpg" alt="Blue Skull Team" 
-         style="width:40%; max-width:200px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2);">
-    <p style="margin-top:15px; font-style:italic;">“Restoring lives, one step at a time.”</p>
-  </div>
-</div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>© 2025 Blue Skull Charity | Restoring Lives One Step at a Time</p>
+        </div>
+    </footer>
 
-<!-- Footer -->
-<footer>
-  <p>© 2025 Online Blue Skull Charity Posters | Empowering Change Through Design</p>
-</footer>
-
-<script src="script.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,22 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online Charity Posters | Login</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Skull Charity | Restoring Lives One Step at a Time</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a3552;
+            --secondary: #00a6a6;
+            --accent: #ff6600;
+            --light: #f8f9fa;
+            --dark: #333;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--secondary);
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 53, 82, 0.8), rgba(0, 166, 166, 0.7)), 
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background-color: #e55a00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Info Section */
+        .info {
+            padding: 5rem 2rem;
+            text-align: center;
+            background-color: white;
+        }
+
+        .info h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                        url('https://images.unsplash.com/photo-1551833993-1d2e6ec4544c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .company-logo-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .company-logo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 5px solid var(--secondary);
+            margin: 0 auto 1.5rem;
+        }
+
+        .about h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin: 2rem 0 1rem;
+        }
+
+        .about p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about ul {
+            margin-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about li {
+            margin-bottom: 0.8rem;
+        }
+
+        .mission-statement {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background-color: var(--light);
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .feature-buttons {
+            margin-bottom: 3rem;
+        }
+
+        .feature-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .feature-btn:hover {
+            background-color: var(--primary);
+        }
+
+        .single-image-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .single-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .single-image:hover {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(26, 53, 82, 0.9), rgba(26, 53, 82, 0.9)), 
+                        url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 250px;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .navbar ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cards, .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card, .contact-item {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .company-logo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .single-image-container {
+                max-width: 90%;
+            }
+        }
+    </style>
 </head>
-<body class="login-page">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.jpg" alt="Blue Skull Logo" class="logo-image">
+            <h2>Blue Skull Charity</h2>
+        </div>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<div class="login-container">
-  <h1>Online Charity Posters</h1>
-  <p class="subtitle">Join us in spreading kindness through posters.</p>
-  <input type="text" id="username" placeholder="Enter Username">
-  <input type="password" id="password" placeholder="Enter Password">
-  <button onclick="login()">Login</button>
-  <p id="message" class="error"></p>
-</div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Restoring Lives One Step at a Time</h1>
+        <p>Blue Skull Charity provides footwear to underprivileged children, giving them protection, confidence, and access to education.</p>
+        <a href="#about" class="cta-button">Learn More</a>
+    </section>
 
-<script src="script.js"></script>
+    <!-- Info Section -->
+    <section class="info">
+        <h2>How We Make a Difference</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-shoe-prints card-icon"></i>
+                <h3>Provide Footwear</h3>
+                <p>We distribute quality shoes to children in need, protecting them from injuries and diseases.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-graduation-cap card-icon"></i>
+                <h3>Enable Education</h3>
+                <p>With proper footwear, children can attend school regularly and focus on their studies.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hands-helping card-icon"></i>
+                <h3>Build Confidence</h3>
+                <p>Shoes restore dignity and self-esteem, empowering children to walk with pride.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Blue Skull Charity</h2>
+            
+            <div class="company-logo-section">
+                <img src="logo.jpg" alt="Blue Skull Company Logo" class="company-logo">
+                <h3>Our Official Logo</h3>
+                <p>The Blue Skull represents resilience, strength, and hope for the children we serve. It symbolizes our commitment to restoring dignity one step at a time.</p>
+            </div>
+            
+            <h3>Our Mission</h3>
+            <p>Blue Skull exists to restore dignity and opportunity for underprivileged children by providing proper footwear. We aim to bridge the gap in basic needs, starting with shoes - an essential tool for safety, confidence, and access to education.</p>
+            
+            <h3>The Problem</h3>
+            <p>Many children walk long distances barefoot, facing injury, disease, and social stigma. Without proper footwear, they're unable to attend school regularly and are at risk of various health issues.</p>
+            
+            <h3>Our Impact</h3>
+            <ul>
+                <li><strong>Health & Safety:</strong> Reduces the risk of infections and injuries from walking barefoot.</li>
+                <li><strong>Education:</strong> Encourages consistent school attendance and better academic performance.</li>
+                <li><strong>Confidence:</strong> Empowers kids to walk with pride and dignity.</li>
+                <li><strong>Community Engagement:</strong> Inspires individuals and companies to take part in meaningful giving.</li>
+            </ul>
+            
+            <div class="mission-statement">
+                "Blue Skull is more than a charity, it's a movement. Donating shoes is not just about giving an item; it's about restoring lives, creating hope, and walking alongside the next generation."
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Our Work in Action</h2>
+        <div class="feature-buttons">
+            <button class="feature-btn" onclick="showPhotos()">View Photos</button>
+            <button class="feature-btn" onclick="showGraphics()">View Posters</button>
+        </div>
+        
+        <!-- Single Image Containers -->
+        <div class="single-image-container" id="photos-container">
+            <img src="torn shoes.jpeg" alt="Children receiving shoes" class="single-image">
+            <p class="image-caption">Children receiving new shoes at our distribution event in Maseru</p>
+        </div>
+        
+        <div class="single-image-container" id="posters-container">
+            <img src="Humanitarian poster-01.jpg" alt="Charity Poster" class="single-image">
+            <p class="image-caption">Our latest awareness campaign poster - "Walk With Pride"</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>support@blueskullcharity.org</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+266 56702293</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Maseru, Lesotho</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>© 2025 Blue Skull Charity | Restoring Lives One Step at a Time</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to show photos
+        function showPhotos() {
+            // Hide all containers first
+            document.getElementById('photos-container').style.display = 'none';
+            document.getElementById('posters-container').style.display = 'none';
+            
+            // Show the photos container
+            document.getElementById('photos-container').style.display = 'block';
+            
+            // Scroll to the image for better visibility
+            document.getElementById('photos-container').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Function to show posters
+        function showGraphics() {
+            // Hide all containers first
+            document.getElementById('photos-container').style.display = 'none';
+            document.getElementById('posters-container').style.display = 'none';
+            
+            // Show the posters container
+            document.getElementById('posters-container').style.display = 'block';
+            
+            // Scroll to the image for better visibility
+            document.getElementById('posters-container').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
